@@ -1,0 +1,150 @@
+/* ============================================================
+   SPELLBINDER
+   Global styles — canvas host, overlays, dashboard, utilities
+   ============================================================ */
+
+:root {
+    --gold:       #F5C842;
+    --gold-glow:  #FFD700;
+    --gold-dim:   rgba(245, 200, 66, 0.25);
+    --mint:       #8EC9A2;
+    --sky:        #5BB8D6;
+    --cloud:      #F5F0E8;
+    --coral:      #E8845A;
+    --deep-bg:    #0d0a1e;
+    --panel-bg:   rgba(10, 6, 28, 0.92);
+
+    --font-display: 'Cinzel Decorative', Georgia, serif;
+    --font-label:   'Cinzel', Georgia, serif;
+    --font-body:    'Crimson Text', Georgia, serif;
+}
+
+/* ── Reset & base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 50% 30%, #1a0a3a 0%, #0d0a1e 55%, #050310 100%);
+    color: var(--gold);
+    font-family: var(--font-body);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+}
+
+/* ── Canvas container ───────────────────────────────────────── */
+#game-container {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-container canvas {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* ── Overlay root (DOM overlays rendered by JS) ─────────────── */
+#overlay-root {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#overlay-root > * {
+    pointer-events: auto;
+}
+
+/* ── Typography defaults ────────────────────────────────────── */
+h1, h2, h3 { font-family: var(--font-display); }
+p           { font-family: var(--font-body); margin: 0; }
+
+/* ── Button defaults ────────────────────────────────────────── */
+button {
+    font-family: var(--font-label);
+    cursor: pointer;
+    outline: none;
+    transition: transform 0.12s ease, filter 0.12s ease;
+}
+
+button:focus-visible {
+    outline: 2px solid var(--gold-dim);
+    outline-offset: 3px;
+}
+
+button:hover { transform: scale(1.04); }
+button:active { transform: scale(0.97); }
+
+/* ── Input fields ───────────────────────────────────────────── */
+input[type="text"],
+input[type="password"],
+textarea {
+    font-family: var(--font-body);
+    background: rgba(20, 10, 45, 0.9);
+    border: 1px solid var(--gold-dim);
+    border-radius: 6px;
+    color: var(--cloud);
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: rgba(245, 200, 66, 0.65);
+    box-shadow: 0 0 8px rgba(245, 200, 66, 0.2);
+}
+
+/* ── Dashboard overlay ──────────────────────────────────────── */
+#dashboard-overlay {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(ellipse at 50% 20%, rgba(15, 8, 40, 0.99) 0%, rgba(5, 2, 15, 0.99) 100%);
+    color: var(--cloud);
+}
+
+/* ── Virtual keyboard (mobile) ──────────────────────────────── */
+#vkb button:active {
+    background: rgba(245, 200, 66, 0.2) !important;
+    transform: scale(0.95);
+}
+
+/* ── Scrollbar styling ──────────────────────────────────────── */
+::-webkit-scrollbar          { width: 6px; }
+::-webkit-scrollbar-track    { background: rgba(10, 6, 28, 0.5); }
+::-webkit-scrollbar-thumb    { background: rgba(245, 200, 66, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(245, 200, 66, 0.55); }
+
+/* ── Selection ──────────────────────────────────────────────── */
+::selection { background: rgba(245, 200, 66, 0.3); color: var(--cloud); }
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes glow-pulse {
+    0%, 100% { text-shadow: 0 0 8px rgba(245, 240, 232, 0.35); }
+    50%       { text-shadow: 0 0 22px rgba(245, 200, 66, 0.55); }
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Utility ─────────────────────────────────────────────────── */
+.gold      { color: var(--gold); }
+.mint      { color: var(--mint); }
+.coral     { color: var(--coral); }
+.cloud     { color: var(--cloud); }
+.cinzel    { font-family: var(--font-label); }
+.cinzel-d  { font-family: var(--font-display); }
+
+/* ── Mobile / PWA safe area ─────────────────────────────────── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+    body { padding-bottom: env(safe-area-inset-bottom); }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d0a1e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Spellbinder</title>
+
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="file-protocol-warning" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+        background:rgba(15,8,35,0.97);border:1px solid #F5C842;border-radius:12px;padding:36px 48px;
+        font-family:Arial,sans-serif;text-align:center;color:#F5F0E8;max-width:500px;z-index:9999;">
+        <h2 style="color:#F5C842;font-family:Georgia,serif;margin:0 0 16px;">Spellbinder needs a local server</h2>
+        <p style="margin:0 0 12px;line-height:1.6;">This game uses ES modules which require HTTP.<br>
+        Opening <code style="color:#8EC9A2;">file://</code> directly won't work.</p>
+        <p style="margin:0;line-height:1.8;font-size:13px;color:#8EC9A2;">
+            <strong>Terminal:</strong> <code style="color:#F5C842;">npx serve .</code>
+        </p>
+    </div>
+
+    <div id="phaser-error" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+        background:rgba(15,8,35,0.97);border:1px solid #E8845A;border-radius:12px;padding:36px 48px;
+        font-family:Arial,sans-serif;text-align:center;color:#F5F0E8;max-width:500px;z-index:9999;">
+        <h2 style="color:#E8845A;font-family:Georgia,serif;margin:0 0 16px;">Game engine failed to load</h2>
+        <p style="margin:0 0 12px;line-height:1.6;">Phaser could not be loaded from the CDN. Check your internet connection.</p>
+    </div>
+
+    <script>
+        if (location.protocol === 'file:') {
+            document.getElementById('file-protocol-warning').style.display = 'block';
+        }
+    </script>
+
+    <div id="game-container"></div>
+    <div id="overlay-root"></div>
+
+    <script type="module">
+        // Cache-bust: append build timestamp so browser never serves stale ES modules
+        const v = Date.now();
+        import(`./game.js?v=${v}`);
+    </script>
+</body>
+</html>
