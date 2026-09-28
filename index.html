@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="file-protocol-warning" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -45,10 +45,20 @@
     <div id="game-container"></div>
     <div id="overlay-root"></div>
 
+    <script>
+        // Bump BUILD_VERSION on every deploy so browsers and the service worker
+        // fetch fresh files. (A per-load timestamp here would defeat HTTP caching
+        // entirely - every visit would re-download all modules.)
+        const BUILD_VERSION = '0.1.0';
+    </script>
     <script type="module">
-        // Cache-bust: append build timestamp so browser never serves stale ES modules
-        const v = Date.now();
-        import(`./game.js?v=${v}`);
+        import(`./game.js?v=${BUILD_VERSION}`);
+    </script>
+    <script>
+        // Repeat-visit speed: cache the app shell + assets on-device.
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js'));
+        }
     </script>
 </body>
 </html>

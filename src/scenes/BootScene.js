@@ -29,32 +29,32 @@ export default class BootScene extends Phaser.Scene {
         });
 
         // ── UI Assets ──
-        this.load.image('title-bg', 'assets/ui/title-bg.jpg');
-        this.load.image('logo', 'assets/ui/logo.png');
+        this.load.image('title-bg', 'assets/ui/title-bg.webp');
+        this.load.image('logo', 'assets/ui/logo.webp');
 
         // ── Zone Backgrounds ──
-        this.load.image('bg-meadow', 'assets/backgrounds/meadow.jpg');
-        this.load.image('bg-forest', 'assets/backgrounds/woods.jpg');
-        this.load.image('bg-cave', 'assets/backgrounds/caves.jpg');
-        this.load.image('bg-tower', 'assets/backgrounds/tower.jpg');
-        this.load.image('bg-ice', 'assets/backgrounds/frozen.jpg');
-        this.load.image('bg-volcano', 'assets/backgrounds/dragons-lair.jpg');
+        this.load.image('bg-meadow', 'assets/backgrounds/meadow.webp');
+        this.load.image('bg-forest', 'assets/backgrounds/woods.webp');
+        this.load.image('bg-cave', 'assets/backgrounds/caves.webp');
+        this.load.image('bg-tower', 'assets/backgrounds/tower.webp');
+        this.load.image('bg-ice', 'assets/backgrounds/frozen.webp');
+        this.load.image('bg-volcano', 'assets/backgrounds/dragons-lair.webp');
 
         // ── Wizard Characters ──
         for (let i = 0; i < 6; i++) {
-            this.load.image(`wizard-${i}`, `assets/characters/wizard-${i}.png`);
+            this.load.image(`wizard-${i}`, `assets/characters/wizard-${i}.webp`);
         }
 
         // ── Enemy Sprites ──
-        this.load.image('enemy-slime', 'assets/enemies/slime.png');
-        this.load.image('enemy-goblin', 'assets/enemies/goblin.png');
-        this.load.image('enemy-troll', 'assets/enemies/cave-troll.png');
-        this.load.image('enemy-gargoyle', 'assets/enemies/gargoyle.png');
-        this.load.image('enemy-wraith', 'assets/enemies/ice-wraith.png');
-        this.load.image('enemy-dragon', 'assets/enemies/dragon.png');
+        this.load.image('enemy-slime', 'assets/enemies/slime.webp');
+        this.load.image('enemy-goblin', 'assets/enemies/goblin.webp');
+        this.load.image('enemy-troll', 'assets/enemies/cave-troll.webp');
+        this.load.image('enemy-gargoyle', 'assets/enemies/gargoyle.webp');
+        this.load.image('enemy-wraith', 'assets/enemies/ice-wraith.webp');
+        this.load.image('enemy-dragon', 'assets/enemies/dragon.webp');
 
         // ── Tile Assets (Letter Slots) ──
-        this.load.image('tile-empty', 'assets/tiles/blank/tile-empty@2x.png');
+        this.load.image('tile-empty', 'assets/tiles/blank/tile-empty@2x.webp');
 
         // Letter tiles: key = tile-{state}-{LETTER}, file = tile_{state}_{LETTER}.png
         const tileStates = ['active', 'bonus', 'complete', 'correct', 'hint', 'misplaced', 'wrong'];
@@ -64,18 +64,18 @@ export default class BootScene extends Phaser.Scene {
             letters.forEach(letter => {
                 this.load.image(
                     `tile-${state}-${letter}`,
-                    `assets/tiles/${state}/tile_${state}_${letter}.png`
+                    `assets/tiles/${state}/tile_${state}_${letter}.webp`
                 );
             });
         });
 
         // ── Panel Assets ──
-        this.load.image('panel-game-board', 'assets/panels/panel-game-board.png');
-        this.load.image('panel-stats-sidebar', 'assets/panels/panel-stats-sidebar.png');
-        this.load.image('bar-progress-frame', 'assets/panels/bar-progress-frame.png');
-        this.load.image('button-hint', 'assets/panels/button-hint.png');
-        this.load.image('frame-arch', 'assets/panels/frame-arch.png');
-        this.load.image('speech-bubble', 'assets/panels/speech-bubble.png');
+        this.load.image('panel-game-board', 'assets/panels/panel-game-board.webp');
+        this.load.image('panel-stats-sidebar', 'assets/panels/panel-stats-sidebar.webp');
+        this.load.image('bar-progress-frame', 'assets/panels/bar-progress-frame.webp');
+        this.load.image('button-hint', 'assets/panels/button-hint.webp');
+        this.load.image('frame-arch', 'assets/panels/frame-arch.webp');
+        this.load.image('speech-bubble', 'assets/panels/speech-bubble.webp');
 
         // Cleanup loading text after preload completes
         this.load.on('complete', () => {
