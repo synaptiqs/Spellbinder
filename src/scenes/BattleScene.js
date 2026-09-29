@@ -425,9 +425,11 @@ export default class BattleScene extends Phaser.Scene {
 
         // Shrink the game container so Phaser's FIT mode rescales the canvas
         // to sit entirely above the keyboard — nothing hidden underneath.
+        // Measure the real rendered height after append (offsetHeight forces layout).
         const container = document.getElementById('game-container');
         if (container) {
-            container.style.height = `${window.innerHeight - kbHReal}px`;
+            const kbH = kb.offsetHeight || 0;
+            container.style.height = `${window.innerHeight - kbH}px`;
             this.game.scale.refresh();
         }
     }
@@ -439,6 +441,7 @@ export default class BattleScene extends Phaser.Scene {
         if (this._wordIndex >= this._words.length) { this._victory(); return; }
         this._typed        = '';
         this._wrongCount   = 0;
+        this._hintsUsed    = 0; // hints (and the no-hint token bonus) reset per word
         this._inputEnabled = false;
         this._hovering     = false;
 
@@ -634,8 +637,12 @@ export default class BattleScene extends Phaser.Scene {
         SaveSystem.addPlayTime(Math.floor(elapsed / 1000));
         const { met: dailyMet, justMet: dailyJustMet, streak } = SaveSystem.addDailyPlayTime(elapsed / 1000);
 
+        // Max speed bonus (speed ratio hits the 1.5x cap) earns Lightning Caster.
+        // Mirrors the speedRatio computation in ProgressSystem.calcBattleXP.
+        const speedRatio = Math.min((this._wordCount * 6000) / Math.max(elapsed, 1000), 1.5);
         const newAchs = ProgressSystem.checkAchievements({
             perfect_battle: this._mistakes === 0,
+            speed_run: speedRatio >= 1.5,
         });
 
         this._cleanup();
@@ -661,10 +668,20 @@ export default class BattleScene extends Phaser.Scene {
     }
 
     _defeat() {
+        // Option C: a lost battle is a RETREAT, not a wipe. The player keeps
+        // 65% of the XP their completed words would have earned, plus every
+        // completed word (markWordMastered already ran per word). The level
+        // itself is NOT completed — campaign progress is never lost.
         const elapsed    = Date.now() - this._battleStart;
+        const wordsKept  = this._wordIndex;
         const failedWord = this._words[this._wordIndex]?.word;
         if (failedWord) SaveSystem.recordWordResult(failedWord, false);
-        SaveSystem.addDailyPlayTime(elapsed / 1000);
+        const retreatXP = Math.round(ProgressSystem.calcBattleXP(
+            wordsKept, this._wordCount, elapsed, this._hintsUsed
+        ) * 0.65);
+        const { xp: totalXP, level, leveled } = SaveSystem.addXP(retreatXP);
+        SaveSystem.addPlayTime(Math.floor(elapsed / 1000));
+        const newAchs = ProgressSystem.checkAchievements({});
         this._cleanup();
         this.cameras.main.fadeOut(500);
         this.time.delayedCall(500, () => {
@@ -672,7 +689,13 @@ export default class BattleScene extends Phaser.Scene {
                 won: false,
                 zoneId: this._zoneId,
                 levelId: this._levelId,
-                xpEarned: 0,
+                xpEarned: retreatXP,
+                totalXP,
+                level,
+                leveled,
+                wordsMastered: this._words.slice(0, wordsKept).map(w => w.word),
+                newAchievements: newAchs,
+                mistakes: this._mistakes,
                 tokensEarned: this._tokensEarned,
             });
         });

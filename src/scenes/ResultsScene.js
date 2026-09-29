@@ -135,24 +135,61 @@ export default class ResultsScene extends Phaser.Scene {
     }
 
     _drawDefeat(w, h) {
-        this.add.text(w / 2, h * 0.15, 'Your spell was broken...', {
+        // Option C framing: a lost battle is a retreat. XP (65%) and every
+        // completed word are kept — the screen must say so, or a kid reads
+        // defeat as lost progress.
+        this.add.text(w / 2, h * 0.13, 'A Brave Retreat!', {
             fontFamily: '"Cinzel Decorative", Georgia',
             fontSize: '32px',
             color: '#E8845A',
         }).setOrigin(0.5);
 
-        this.add.text(w / 2, h * 0.28, 'Keep practicing — you will master it!', {
-            fontFamily: 'Arial', fontSize: '16px', color: '#F5F0E8', alpha: 0.7, fontStyle: 'italic',
+        this.add.text(w / 2, h * 0.21, 'The enemy was too strong — this time.', {
+            fontFamily: 'Arial', fontSize: '15px', color: '#F5F0E8', alpha: 0.8, fontStyle: 'italic',
         }).setOrigin(0.5);
 
-        this._makeButton(w / 2 - 100, h * 0.6, 'Try Again', 0xE8845A, () => {
+        this.add.text(w / 2, h * 0.27, 'You keep your XP and every word you mastered.', {
+            fontFamily: 'Arial', fontSize: '14px', color: '#8EC9A2',
+        }).setOrigin(0.5);
+
+        if (this._xpEarned > 0) {
+            this.add.text(w / 2, h * 0.34, `+${this._xpEarned} XP kept`, {
+                fontFamily: '"Cinzel Decorative", Georgia',
+                fontSize: '28px',
+                color: '#F5C842',
+            }).setOrigin(0.5);
+        }
+
+        if (this._wordsMastered.length > 0) {
+            const y0 = h * 0.41;
+            this.add.text(w / 2, y0, 'Words Kept', {
+                fontFamily: '"Cinzel", Arial', fontSize: '13px', color: '#8EC9A2',
+            }).setOrigin(0.5);
+
+            const cols  = Math.min(6, this._wordsMastered.length);
+            const gapX  = 120;
+            const startX = w / 2 - ((cols - 1) * gapX) / 2;
+            this._wordsMastered.forEach((word, i) => {
+                const col = i % cols;
+                const row = Math.floor(i / cols);
+                this.add.text(startX + col * gapX, y0 + 24 + row * 26, word, {
+                    fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F5F0E8',
+                }).setOrigin(0.5);
+            });
+        }
+
+        this.add.text(w / 2, h * 0.56, 'Your campaign progress is never lost.', {
+            fontFamily: 'Arial', fontSize: '12px', color: '#F5F0E8', alpha: 0.6, fontStyle: 'italic',
+        }).setOrigin(0.5);
+
+        this._makeButton(w / 2 - 100, h * 0.68, 'Try Again', 0xE8845A, () => {
             this.cameras.main.fadeOut(300);
             this.time.delayedCall(300, () => {
                 this.scene.start('BattleScene', { zoneId: this._zoneId, levelId: this._levelId });
             });
         });
 
-        this._makeButton(w / 2 + 100, h * 0.6, 'World Map', 0x8EC9A2, () => {
+        this._makeButton(w / 2 + 100, h * 0.68, 'World Map', 0x8EC9A2, () => {
             this.cameras.main.fadeOut(300);
             this.time.delayedCall(300, () => {
                 this.scene.start('WorldMapScene', { zoneId: this._zoneId });

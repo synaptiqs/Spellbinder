@@ -5,10 +5,10 @@ import SaveSystem from './SaveSystem.js';
 
 const ALL_WORDS = [...WORDS_K3, ...WORDS_4_8, ...WORDS_9_12];
 
-// Words that are suitable for each grade (grade and below + 1 above for challenge)
+// Words that are suitable for each grade (two below through one above for challenge)
 function gradePool(grade) {
     const g = Math.max(0, Math.min(12, grade));
-    return ALL_WORDS.filter(w => w.grade <= g && w.grade >= Math.max(0, g - 2));
+    return ALL_WORDS.filter(w => w.grade <= g + 1 && w.grade >= Math.max(0, g - 2));
 }
 
 const WordSystem = {
@@ -30,7 +30,16 @@ const WordSystem = {
         const mastered  = SaveSystem.get('progress.wordsmastered') || [];
         const wordStats = SaveSystem.get('progress.wordStats') || {};
 
-        const pool    = ALL_WORDS.filter(w => w.grade >= zone.gradeMin && w.grade <= zone.gradeMax);
+        const zonePool  = ALL_WORDS.filter(w => w.grade >= zone.gradeMin && w.grade <= zone.gradeMax);
+        // The player's chosen grade personalizes difficulty: prefer words near their
+        // grade band, falling back to the full zone pool when too few match.
+        const pg = SaveSystem.get('profile.grade');
+        let pool = zonePool;
+        if (typeof pg === 'number') {
+            const g = Math.max(0, Math.min(12, pg));
+            const graded = zonePool.filter(w => w.grade >= Math.max(0, g - 2) && w.grade <= g + 1);
+            if (graded.length >= count) pool = graded;
+        }
         const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
 
         const struggling = [];
