@@ -64,7 +64,7 @@ export default class TitleScene extends Phaser.Scene {
         this._makeButton(width / 2, btnY + 156, 'PARENT / TEACHER DASHBOARD', 0x8EC9A2, () => this._openDashboard(),                true);
 
         // ── Version tag ───────────────────────────────────────────────────
-        this.add.text(width / 2, height - 18, '✦ APPRENTICE  ·  AGES 5–18  ✦', {
+        this.add.text(width / 2, height - 18, '✦ APPRENTICE  ·  K THROUGH COLLEGE  ✦', {
             fontFamily: 'Arial',
             fontSize: '11px',
             color: '#F5C842',
