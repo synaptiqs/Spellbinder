@@ -2,12 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0d0a1e">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Spellbinder · A Time for Spelling Adventure</title>
+    <meta name="description" content="Spellbinder is a magical spelling adventure from Time for Spelling. Students from kindergarten through college master words, rise from Apprentice to Grand Master, and discover that every word is a new spell. Free to play in your browser.">
+    <link rel="canonical" href="https://timeforspelling.pages.dev/">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / social share -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Time for Spelling">
+    <meta property="og:title" content="Spellbinder · A Time for Spelling Adventure">
+    <meta property="og:description" content="A magical spelling adventure for kindergarten through college. Master words, rise from Apprentice to Grand Master — every word is a new spell.">
+    <meta property="og:url" content="https://timeforspelling.pages.dev/">
+    <meta property="og:image" content="https://timeforspelling.pages.dev/share/og-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Spellbinder — a young wizard apprentice and his cat among floating golden letters. Every word is a new spell.">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Spellbinder · A Time for Spelling Adventure">
+    <meta name="twitter:description" content="A magical spelling adventure for kindergarten through college. Master words, rise from Apprentice to Grand Master — every word is a new spell.">
+    <meta name="twitter:image" content="https://timeforspelling.pages.dev/share/og-card.jpg">
+    <meta name="twitter:image:alt" content="Spellbinder — Every word is a new spell.">
+
+    <!-- PWA / mobile chrome -->
+    <meta name="theme-color" content="#1e3a5f">
     <meta name="mobile-web-app-capable" content="yes">
-    <title>Spellbinder</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Spellbinder">
 
     <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
     <link rel="manifest" href="manifest.json">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,6 +45,23 @@
     <script defer src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <!-- Loading screen: warm Tier-1 storybook first impression while Phaser boots.
+         Pure web shell — hidden (not removed) by the script below once the game
+         canvas is live, so no game code is involved. -->
+    <div id="spellbinder-loader" role="status" aria-label="Loading Spellbinder">
+        <div class="loader-stars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="loader-inner">
+            <p class="loader-eyebrow">Time for Spelling presents</p>
+            <h1 class="loader-title">Spellbinder</h1>
+            <p class="loader-tagline">Every word is a new spell.</p>
+            <div class="loader-wand" aria-hidden="true"><div class="loader-wand-spark"></div></div>
+            <p class="loader-status">Opening your spellbook…</p>
+        </div>
+    </div>
+
     <div id="file-protocol-warning" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
         background:rgba(15,8,35,0.97);border:1px solid #F5C842;border-radius:12px;padding:36px 48px;
         font-family:Arial,sans-serif;text-align:center;color:#F5F0E8;max-width:500px;z-index:9999;">
@@ -53,6 +97,28 @@
     </script>
     <script type="module">
         import(`./game.js?v=${BUILD_VERSION}`);
+    </script>
+    <script>
+        // Hide the storybook loader once the Phaser canvas is actually rendering.
+        // Zero-touch: we only observe the DOM, no game code changes needed.
+        (function () {
+            var loader = document.getElementById('spellbinder-loader');
+            var good = 0, checks = 0;
+            var timer = setInterval(function () {
+                checks++;
+                var canvas = document.querySelector('#game-container canvas');
+                if (canvas && canvas.width > 0) {
+                    if (++good >= 3) {
+                        clearInterval(timer);
+                        loader.classList.add('is-done');
+                        setTimeout(function () { loader.remove(); }, 800);
+                    }
+                } else {
+                    good = 0;
+                }
+                if (checks > 240) clearInterval(timer); // 60s: leave loader up; error dialogs handle failure
+            }, 250);
+        })();
     </script>
     <script>
         // Repeat-visit speed: cache the app shell + assets on-device.
