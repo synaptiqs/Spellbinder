@@ -127,7 +127,9 @@ export default class ProfileScene extends Phaser.Scene {
     }
 
     _drawAvatar(x, y, avId) {
-        this.add.image(x, y, `wizard-${avId}`).setOrigin(0.5).setScale(0.65);
+        // Legacy profiles may carry avatarId 2-5 from the retired 6-mage roster.
+        const safeId = avId === 1 ? 1 : 0;
+        this.add.image(x, y, `wizard-${safeId}`).setOrigin(0.5).setScale(0.65);
     }
 
     _showAchTooltip(x, y, ach) {

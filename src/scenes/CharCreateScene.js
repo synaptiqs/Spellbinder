@@ -1,12 +1,8 @@
 import SaveSystem from '../systems/SaveSystem.js';
 
 const AVATARS = [
-    { id: 0, label: 'Blue Mage' },
-    { id: 1, label: 'Violet Mage' },
-    { id: 2, label: 'Crimson Mage' },
-    { id: 3, label: 'Forest Mage' },
-    { id: 4, label: 'Gold Mage' },
-    { id: 5, label: 'Teal Mage' },
+    { id: 0, label: 'Boy Mage' },
+    { id: 1, label: 'Girl Mage' },
 ];
 
 export default class CharCreateScene extends Phaser.Scene {
@@ -34,7 +30,7 @@ export default class CharCreateScene extends Phaser.Scene {
         // Avatar selection row
         this._avatarPositions = [];
         this._avatarButtons = AVATARS.map((av, i) => {
-            const cols = 6;
+            const cols = 2;
             const spacing = Math.min(90, (width - 80) / cols);
             const startX = width / 2 - (spacing * (cols - 1)) / 2;
             const bx = startX + i * spacing;

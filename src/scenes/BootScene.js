@@ -41,7 +41,7 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('bg-volcano', 'assets/backgrounds/dragons-lair.webp');
 
         // ── Wizard Characters ──
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 2; i++) {
             this.load.image(`wizard-${i}`, `assets/characters/wizard-${i}.webp`);
         }
 
