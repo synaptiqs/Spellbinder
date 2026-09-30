@@ -98,7 +98,8 @@ export default class BattleScene extends Phaser.Scene {
     // ── Player ────────────────────────────────────────────────────────────
     _drawPlayer(w, h) {
         const profile  = SaveSystem.get('profile');
-        const avatarId = profile?.avatarId ?? 0;
+        // Legacy profiles may carry avatarId 2-5 from the retired 6-mage roster.
+        const avatarId = profile?.avatarId === 1 ? 1 : 0;
         const px = w * 0.15;
         const py = h * 0.75;
         this._playerGfx = this.add.image(px, py - 80, `wizard-${avatarId}`)
