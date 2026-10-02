@@ -4,15 +4,15 @@
    ============================================================ */
 
 :root {
-    --gold:       #F5C842;
+    --gold:       #F1B440;
     --gold-glow:  #FFD700;
     --gold-dim:   rgba(245, 200, 66, 0.25);
     --mint:       #8EC9A2;
     --sky:        #5BB8D6;
-    --cloud:      #F5F0E8;
+    --cloud:      #F5F4EE;
     --coral:      #E8845A;
-    --deep-bg:    #0d0a1e;
-    --panel-bg:   rgba(10, 6, 28, 0.92);
+    --deep-bg:    #130A32;
+    --panel-bg:   rgba(19, 10, 50, 0.92);
 
     --font-display: 'Cinzel Decorative', Georgia, serif;
     --font-label:   'Cinzel', Georgia, serif;
@@ -28,7 +28,7 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: radial-gradient(ellipse at 50% 30%, #1a0a3a 0%, #0d0a1e 55%, #050310 100%);
+    background: radial-gradient(ellipse at 50% 30%, #251a52 0%, #130A32 55%, #0a0618 100%);
     color: var(--gold);
     font-family: var(--font-body);
     -webkit-tap-highlight-color: transparent;
@@ -218,7 +218,7 @@ textarea:focus {
     top: 0; bottom: 0;
     width: 40%;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(245,200,66,0) 0%, #f5c842 45%, #ffe9a8 55%, rgba(245,200,66,0) 100%);
+    background: linear-gradient(90deg, rgba(245,200,66,0) 0%, #F1B440 45%, #ffe9a8 55%, rgba(245,200,66,0) 100%);
     animation: wand-shimmer 1.6s ease-in-out infinite;
 }
 
