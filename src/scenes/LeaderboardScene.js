@@ -1,11 +1,11 @@
 import SaveSystem from '../systems/SaveSystem.js';
 
 const C = {
-    yellow: '#F5C842',
+    yellow: '#F1B440',
     mint:   '#8EC9A2',
-    cloud:  '#F5F0E8',
+    cloud:  '#F5F4EE',
     coral:  '#E8845A',
-    deep:   '#0d0a1e',
+    deep:   '#130A32',
     purple: '#7755bb',
 };
 
@@ -38,7 +38,7 @@ export default class LeaderboardScene extends Phaser.Scene {
 
         // Divider
         const div = this.add.graphics();
-        div.lineStyle(1, 0xF5C842, 0.3);
+        div.lineStyle(1, 0xF1B440, 0.3);
         div.lineBetween(w * 0.1, h * 0.18, w * 0.9, h * 0.18);
 
         // Loading indicator
@@ -128,7 +128,7 @@ export default class LeaderboardScene extends Phaser.Scene {
             // Row background for current player or top-3
             if (isLocal || isTop3) {
                 const rowBg = this.add.graphics();
-                rowBg.fillStyle(isLocal ? 0xF5C842 : 0xffffff, isLocal ? 0.06 : 0.03);
+                rowBg.fillStyle(isLocal ? 0xF1B440 : 0xffffff, isLocal ? 0.06 : 0.03);
                 rowBg.fillRoundedRect(w * 0.05, y - rowH / 2 + 2, w * 0.9, rowH - 4, 4);
             }
 
@@ -204,12 +204,12 @@ export default class LeaderboardScene extends Phaser.Scene {
 
     _drawBackground(w, h) {
         const bg = this.add.graphics();
-        bg.fillGradientStyle(0x0d0a1e, 0x0d0a1e, 0x180a30, 0x050310, 1);
+        bg.fillGradientStyle(0x130A32, 0x130A32, 0x180a30, 0x0a0618, 1);
         bg.fillRect(0, 0, w, h);
 
         // Subtle corner decorations
         const dec = this.add.graphics();
-        dec.lineStyle(1, 0xF5C842, 0.12);
+        dec.lineStyle(1, 0xF1B440, 0.12);
         dec.strokeRect(20, 20, w - 40, h - 40);
     }
 
