@@ -42,7 +42,7 @@ export default class WorldMapScene extends Phaser.Scene {
     _drawZonePath(w, h) {
         const positions = this._zonePositions(w, h);
         const g = this.add.graphics();
-        g.lineStyle(3, 0xF5C842, 0.2);
+        g.lineStyle(3, 0xF1B440, 0.2);
         g.beginPath();
         g.moveTo(positions[0].x, positions[0].y);
         for (let i = 1; i < positions.length; i++) {
@@ -88,7 +88,7 @@ export default class WorldMapScene extends Phaser.Scene {
                 const ly = y + Math.sin(angle) * (radius + 14);
                 const complete = SaveSystem.isLevelComplete(zone.id, li);
                 const dotG = this.add.graphics();
-                dotG.fillStyle(complete ? 0xF5C842 : 0x333355, 1);
+                dotG.fillStyle(complete ? 0xF1B440 : 0x333355, 1);
                 dotG.fillCircle(lx, ly, 5);
             }
 
@@ -121,8 +121,8 @@ _showZoneTooltip(x, y, zone) {
         this._tooltip = this.add.text(x, y, `${zone.name}\nGrades ${zone.gradeMin}–${zone.gradeMax}`, {
             fontFamily: 'Arial',
             fontSize: '11px',
-            color: '#F5F0E8',
-            backgroundColor: '#0d0a1ecc',
+            color: '#F5F4EE',
+            backgroundColor: '#130A32cc',
             padding: { x: 8, y: 6 },
             align: 'center',
         }).setOrigin(0.5);
@@ -144,14 +144,14 @@ _showZoneTooltip(x, y, zone) {
         const py = height / 2 - panelH / 2;
 
         const bg = this.add.graphics();
-        bg.fillStyle(0x0d0a1e, 0.95);
+        bg.fillStyle(0x130A32, 0.95);
         bg.fillRoundedRect(px, py, panelW, panelH, 12);
-        bg.lineStyle(1, 0xF5C842, 0.4);
+        bg.lineStyle(1, 0xF1B440, 0.4);
         bg.strokeRoundedRect(px, py, panelW, panelH, 12);
         this._levelPanel.push(bg);
 
         const title = this.add.text(width / 2, py + 24, zone.name, {
-            fontFamily: '"Cinzel", Arial', fontSize: '16px', color: '#F5C842',
+            fontFamily: '"Cinzel", Arial', fontSize: '16px', color: '#F1B440',
         }).setOrigin(0.5);
         this._levelPanel.push(title);
 
@@ -169,7 +169,7 @@ _showZoneTooltip(x, y, zone) {
             const btn = this.add.text(lx, ly, labelTxt, {
                 fontFamily: '"Cinzel", Arial',
                 fontSize: '14px',
-                color: complete ? '#8EC9A2' : '#F5F0E8',
+                color: complete ? '#8EC9A2' : '#F5F4EE',
                 backgroundColor: complete ? '#1a3a1a' : '#1a1040',
                 padding: { x: 22, y: 9 },
             }).setOrigin(0.5).setInteractive({ useHandCursor: true });
@@ -208,13 +208,13 @@ _showZoneTooltip(x, y, zone) {
 
         // Top bar
         const bar = this.add.graphics();
-        bar.fillStyle(0x0d0a1e, 0.88);
+        bar.fillStyle(0x130A32, 0.88);
         bar.fillRect(0, 0, w, 50);
-        bar.lineStyle(1, 0xF5C842, 0.2);
+        bar.lineStyle(1, 0xF1B440, 0.2);
         bar.lineBetween(0, 50, w, 50);
 
         this.add.text(20, 15, `${profile?.name || 'Mage'}  ·  Level ${progress?.level || 1}`, {
-            fontFamily: '"Cinzel", Arial', fontSize: '14px', color: '#F5C842',
+            fontFamily: '"Cinzel", Arial', fontSize: '14px', color: '#F1B440',
         });
 
         const streak = SaveSystem.getStreak();
