@@ -26,7 +26,7 @@ export default class ResultsScene extends Phaser.Scene {
 
         // Background
         const bg = this.add.graphics();
-        bg.fillGradientStyle(0x0d0a1e, 0x0d0a1e, 0x180a30, 0x050310, 1);
+        bg.fillGradientStyle(0x130A32, 0x130A32, 0x180a30, 0x0a0618, 1);
         bg.fillRect(0, 0, w, h);
 
         if (this._won) {
@@ -41,7 +41,7 @@ export default class ResultsScene extends Phaser.Scene {
         this.add.text(w / 2, h * 0.1, '✦  VICTORY  ✦', {
             fontFamily: '"Cinzel Decorative", Georgia, serif',
             fontSize: '36px',
-            color: '#F5C842',
+            color: '#F1B440',
             shadow: { x: 0, y: 0, color: '#FFD700', blur: 10, fill: true },
         }).setOrigin(0.5);
 
@@ -55,7 +55,7 @@ export default class ResultsScene extends Phaser.Scene {
         this.add.text(w / 2, h * 0.26, `+${this._xpEarned} XP`, {
             fontFamily: '"Cinzel Decorative", Georgia',
             fontSize: '44px',
-            color: '#F5C842',
+            color: '#F1B440',
         }).setOrigin(0.5);
 
         if (this._tokensEarned > 0) {
@@ -67,7 +67,7 @@ export default class ResultsScene extends Phaser.Scene {
         // Daily goal completion banner
         if (this._dailyGoalJustMet) {
             const banner = this.add.text(w / 2, h * 0.39, `🔥 Daily Goal Complete!  ${this._streak} day streak!`, {
-                fontFamily: '"Cinzel", Arial', fontSize: '14px', color: '#F5C842',
+                fontFamily: '"Cinzel", Arial', fontSize: '14px', color: '#F1B440',
                 backgroundColor: '#1a0a30',
                 padding: { x: 16, y: 8 },
             }).setOrigin(0.5);
@@ -90,7 +90,7 @@ export default class ResultsScene extends Phaser.Scene {
                 const col = i % cols;
                 const row = Math.floor(i / cols);
                 this.add.text(startX + col * gapX, h * 0.58 + row * 26, word, {
-                    fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F5F0E8',
+                    fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F5F4EE',
                 }).setOrigin(0.5);
             });
         }
@@ -98,7 +98,7 @@ export default class ResultsScene extends Phaser.Scene {
         // Level up
         if (this._leveled) {
             const lvlTxt = this.add.text(w / 2, h * 0.70, `⭐  LEVEL UP!  Now Level ${this._level}`, {
-                fontFamily: '"Cinzel", Arial', fontSize: '18px', color: '#F5C842',
+                fontFamily: '"Cinzel", Arial', fontSize: '18px', color: '#F1B440',
             }).setOrigin(0.5);
             this.tweens.add({ targets: lvlTxt, scaleX: 1.1, scaleY: 1.1, duration: 400, yoyo: true, repeat: 3 });
         }
@@ -107,19 +107,19 @@ export default class ResultsScene extends Phaser.Scene {
         if (this._newAchs.length > 0) {
             const achY = h * 0.77;
             this.add.text(w / 2, achY, '🏆  New Achievement Unlocked!', {
-                fontFamily: 'Arial', fontSize: '14px', color: '#F5C842',
+                fontFamily: 'Arial', fontSize: '14px', color: '#F1B440',
             }).setOrigin(0.5);
 
             this._newAchs.forEach((ach, i) => {
                 this.add.text(w / 2, achY + 24 + i * 20,
                     `${ach.icon}  ${ach.label} — ${ach.desc}`, {
-                    fontFamily: 'Arial', fontSize: '12px', color: '#F5F0E8',
+                    fontFamily: 'Arial', fontSize: '12px', color: '#F5F4EE',
                 }).setOrigin(0.5);
             });
         }
 
         // Buttons
-        this._makeButton(w / 2 - 110, h * 0.9, 'Continue  ▶', 0xF5C842, () => {
+        this._makeButton(w / 2 - 110, h * 0.9, 'Continue  ▶', 0xF1B440, () => {
             this.cameras.main.fadeOut(300);
             this.time.delayedCall(300, () => {
                 this.scene.start('WorldMapScene', { zoneId: this._zoneId });
@@ -145,7 +145,7 @@ export default class ResultsScene extends Phaser.Scene {
         }).setOrigin(0.5);
 
         this.add.text(w / 2, h * 0.21, 'The enemy was too strong — this time.', {
-            fontFamily: 'Arial', fontSize: '15px', color: '#F5F0E8', alpha: 0.8, fontStyle: 'italic',
+            fontFamily: 'Arial', fontSize: '15px', color: '#F5F4EE', alpha: 0.8, fontStyle: 'italic',
         }).setOrigin(0.5);
 
         this.add.text(w / 2, h * 0.27, 'You keep your XP and every word you mastered.', {
@@ -156,7 +156,7 @@ export default class ResultsScene extends Phaser.Scene {
             this.add.text(w / 2, h * 0.34, `+${this._xpEarned} XP kept`, {
                 fontFamily: '"Cinzel Decorative", Georgia',
                 fontSize: '28px',
-                color: '#F5C842',
+                color: '#F1B440',
             }).setOrigin(0.5);
         }
 
@@ -173,13 +173,13 @@ export default class ResultsScene extends Phaser.Scene {
                 const col = i % cols;
                 const row = Math.floor(i / cols);
                 this.add.text(startX + col * gapX, y0 + 24 + row * 26, word, {
-                    fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F5F0E8',
+                    fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F5F4EE',
                 }).setOrigin(0.5);
             });
         }
 
         this.add.text(w / 2, h * 0.56, 'Your campaign progress is never lost.', {
-            fontFamily: 'Arial', fontSize: '12px', color: '#F5F0E8', alpha: 0.6, fontStyle: 'italic',
+            fontFamily: 'Arial', fontSize: '12px', color: '#F5F4EE', alpha: 0.6, fontStyle: 'italic',
         }).setOrigin(0.5);
 
         this._makeButton(w / 2 - 100, h * 0.68, 'Try Again', 0xE8845A, () => {
@@ -207,12 +207,12 @@ export default class ResultsScene extends Phaser.Scene {
         bg.fillRoundedRect(bx, y, barW, 16, 4);
 
         const bar = this.add.graphics();
-        bar.fillStyle(0xF5C842, 1);
+        bar.fillStyle(0xF1B440, 1);
         bar.fillRoundedRect(bx, y, 0, 16, 4);
         this.tweens.add({ targets: { pct: 0 }, pct: xpInfo.pct, duration: 800, ease: 'Quad.Out',
             onUpdate: (tween, target) => {
                 bar.clear();
-                bar.fillStyle(0xF5C842, 1);
+                bar.fillStyle(0xF1B440, 1);
                 bar.fillRoundedRect(bx, y, barW * target.pct, 16, 4);
             },
         });
@@ -226,7 +226,7 @@ export default class ResultsScene extends Phaser.Scene {
         const txt = this.add.text(x, y, label, {
             fontFamily: '"Cinzel", Arial',
             fontSize: '15px',
-            color: outline ? Phaser.Display.Color.IntegerToColor(color).rgba : '#0d0a1e',
+            color: outline ? Phaser.Display.Color.IntegerToColor(color).rgba : '#130A32',
             backgroundColor: outline ? 'transparent' : `#${color.toString(16).padStart(6, '0')}`,
             padding: { x: 22, y: 10 },
         }).setOrigin(0.5).setInteractive({ useHandCursor: true });
