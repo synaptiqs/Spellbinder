@@ -14,7 +14,7 @@ if (typeof Phaser === 'undefined') {
     console.error('[Spellbinder] Phaser failed to load from CDN');
     const container = document.getElementById('game-container');
     if (container) {
-        container.innerHTML = '<p style="color:#F5F0E8;text-align:center;padding:2rem;font-family:Arial">Game engine failed to load. Please refresh the page.</p>';
+        container.innerHTML = '<p style="color:#F5F4EE;text-align:center;padding:2rem;font-family:Arial">Game engine failed to load. Please refresh the page.</p>';
     }
     throw new Error('Phaser not loaded');
 }
@@ -24,7 +24,7 @@ const config = {
     parent: 'game-container',
     width: 1280,
     height: 720,
-    backgroundColor: '#0d0a1e',
+    backgroundColor: '#130A32',
     scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH,
