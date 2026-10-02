@@ -19,7 +19,7 @@ export default class ProfileScene extends Phaser.Scene {
 
         if (!profile) {
             this.add.text(w / 2, h / 2, 'No profile found.\nStart a new game first!', {
-                fontFamily: 'Arial', fontSize: '18px', color: '#F5F0E8', align: 'center',
+                fontFamily: 'Arial', fontSize: '18px', color: '#F5F4EE', align: 'center',
             }).setOrigin(0.5);
             this._backBtn(w, h);
             return;
@@ -33,7 +33,7 @@ export default class ProfileScene extends Phaser.Scene {
         this.add.text(w * 0.3, h * 0.1, profile.name, {
             fontFamily: '"Cinzel Decorative", Georgia',
             fontSize: '28px',
-            color: '#F5C842',
+            color: '#F1B440',
             shadow: { x: 0, y: 0, color: '#FFD700', blur: 7, fill: true },
         });
 
@@ -53,7 +53,7 @@ export default class ProfileScene extends Phaser.Scene {
         barBg.fillRoundedRect(barX, barY, barW, 18, 5);
 
         const barFill = this.add.graphics();
-        barFill.fillStyle(0xF5C842, 1);
+        barFill.fillStyle(0xF1B440, 1);
         barFill.fillRoundedRect(barX, barY, barW * xpInfo.pct, 18, 5);
 
         this.add.text(barX, barY + 24, `${xpInfo.current} / ${xpInfo.needed} XP to Level ${progress.level + 1}`, {
@@ -77,11 +77,11 @@ export default class ProfileScene extends Phaser.Scene {
             const statBg = this.add.graphics();
             statBg.fillStyle(0x1a0a30, 0.8);
             statBg.fillRoundedRect(sx - 10, sy - 6, 200, 54, 8);
-            statBg.lineStyle(1, 0xF5C842, 0.2);
+            statBg.lineStyle(1, 0xF1B440, 0.2);
             statBg.strokeRoundedRect(sx - 10, sy - 6, 200, 54, 8);
 
             this.add.text(sx, sy, s.value, {
-                fontFamily: '"Cinzel", Arial', fontSize: '22px', color: '#F5C842',
+                fontFamily: '"Cinzel", Arial', fontSize: '22px', color: '#F1B440',
             });
             this.add.text(sx, sy + 26, s.label, {
                 fontFamily: 'Arial', fontSize: '11px', color: '#8EC9A2',
@@ -90,7 +90,7 @@ export default class ProfileScene extends Phaser.Scene {
 
         // ── Achievements ─────────────────────────────────────────────────
         this.add.text(w / 2, h * 0.58, '─── Achievements ───', {
-            fontFamily: '"Cinzel", Arial', fontSize: '13px', color: '#F5C842', letterSpacing: 4,
+            fontFamily: '"Cinzel", Arial', fontSize: '13px', color: '#F1B440', letterSpacing: 4,
         }).setOrigin(0.5);
 
         const allAchs = ProgressSystem.allAchievements();
@@ -107,7 +107,7 @@ export default class ProfileScene extends Phaser.Scene {
             const earned = earnedIds.includes(ach.id);
 
             const dotG = this.add.graphics();
-            dotG.fillStyle(earned ? 0xF5C842 : 0x2a1a40, 1);
+            dotG.fillStyle(earned ? 0xF1B440 : 0x2a1a40, 1);
             dotG.fillCircle(ax, ay, 22);
             dotG.lineStyle(1, earned ? 0xFFD700 : 0x444466, 1);
             dotG.strokeCircle(ax, ay, 22);
@@ -135,8 +135,8 @@ export default class ProfileScene extends Phaser.Scene {
     _showAchTooltip(x, y, ach) {
         if (this._achTooltip) this._achTooltip.destroy();
         this._achTooltip = this.add.text(x, y, `${ach.label}\n${ach.desc}`, {
-            fontFamily: 'Arial', fontSize: '11px', color: '#F5F0E8',
-            backgroundColor: '#0d0a1ecc',
+            fontFamily: 'Arial', fontSize: '11px', color: '#F5F4EE',
+            backgroundColor: '#130A32cc',
             padding: { x: 8, y: 5 },
             align: 'center',
         }).setOrigin(0.5).setDepth(10);

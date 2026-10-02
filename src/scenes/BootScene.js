@@ -19,7 +19,7 @@ export default class BootScene extends Phaser.Scene {
         const progressText = this.add.text(width / 2, height / 2 + 20, '', {
             fontFamily: 'Arial',
             fontSize: '12px',
-            color: '#F5C842',
+            color: '#F1B440',
             alpha: 0.5,
         }).setOrigin(0.5);
 
@@ -90,7 +90,7 @@ export default class BootScene extends Phaser.Scene {
         const title = this.add.text(width / 2, height / 2, 'SPELLBINDER', {
             fontFamily: 'Georgia, serif',
             fontSize: '36px',
-            color: '#F5C842',
+            color: '#F1B440',
             alpha: 0,
         }).setOrigin(0.5);
 

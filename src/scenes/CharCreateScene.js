@@ -21,7 +21,7 @@ export default class CharCreateScene extends Phaser.Scene {
         this.add.text(width / 2, 40, '✦  CREATE YOUR MAGE  ✦', {
             fontFamily: '"Cinzel", Arial',
             fontSize: '22px',
-            color: '#F5C842',
+            color: '#F1B440',
         }).setOrigin(0.5);
 
         // Avatar preview
@@ -48,7 +48,7 @@ export default class CharCreateScene extends Phaser.Scene {
             img.on('pointerout',  () => { if (i !== this._selectedAvatar) img.setAlpha(0.4); });
 
             this.add.text(bx, by + 44, av.label.split(' ')[0], {
-                fontFamily: 'Arial', fontSize: '10px', color: '#F5F0E8', alpha: 0.6,
+                fontFamily: 'Arial', fontSize: '10px', color: '#F5F4EE', alpha: 0.6,
             }).setOrigin(0.5);
 
             return { img, ring };
@@ -64,10 +64,10 @@ export default class CharCreateScene extends Phaser.Scene {
         }).setOrigin(0.5);
 
         this._gradeText = this.add.text(width / 2, height * 0.87, `Grade ${this._selectedGrade}`, {
-            fontFamily: '"Cinzel", Arial', fontSize: '18px', color: '#F5C842',
+            fontFamily: '"Cinzel", Arial', fontSize: '18px', color: '#F1B440',
         }).setOrigin(0.5);
 
-        const arrowStyle = { fontFamily: 'Arial', fontSize: '24px', color: '#F5C842' };
+        const arrowStyle = { fontFamily: 'Arial', fontSize: '24px', color: '#F1B440' };
         const lArrow = this.add.text(width / 2 - 70, height * 0.87, '◀', arrowStyle).setOrigin(0.5).setInteractive({ useHandCursor: true });
         const rArrow = this.add.text(width / 2 + 70, height * 0.87, '▶', arrowStyle).setOrigin(0.5).setInteractive({ useHandCursor: true });
         lArrow.on('pointerdown', () => this._changeGrade(-1));
@@ -77,8 +77,8 @@ export default class CharCreateScene extends Phaser.Scene {
         const beginTxt = this.add.text(width / 2, height * 0.94, '✦  BEGIN QUEST  ✦', {
             fontFamily: '"Cinzel", Arial',
             fontSize: '18px',
-            color: '#0d0a1e',
-            backgroundColor: '#F5C842',
+            color: '#130A32',
+            backgroundColor: '#F1B440',
             padding: { x: 28, y: 12 },
         }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
@@ -156,7 +156,7 @@ export default class CharCreateScene extends Phaser.Scene {
             background:rgba(20,10,45,0.9);
             border:1px solid rgba(245,200,66,0.5);
             border-radius:6px;
-            color:#F5F0E8;
+            color:#F5F4EE;
             outline:none;
             text-align:center;
             letter-spacing:2px;
