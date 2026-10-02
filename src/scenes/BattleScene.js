@@ -8,11 +8,11 @@ const DAMAGE_WRONG  = 15;
 const DAMAGE_WORD   = 25;
 
 const C = {
-    yellow: 0xF5C842,
+    yellow: 0xF1B440,
     mint:   0x8EC9A2,
-    cloud:  0xF5F0E8,
+    cloud:  0xF5F4EE,
     coral:  0xE8845A,
-    deep:   0x0d0a1e,
+    deep:   0x130A32,
 };
 
 export default class BattleScene extends Phaser.Scene {
@@ -109,9 +109,9 @@ export default class BattleScene extends Phaser.Scene {
     // ── HUD ───────────────────────────────────────────────────────────────
     _buildHUD(w, h) {
         const bar = this.add.graphics();
-        bar.fillStyle(0x0d0a1e, 0.9);
+        bar.fillStyle(0x130A32, 0.9);
         bar.fillRect(0, 0, w, 52);
-        bar.lineStyle(1, 0xF5C842, 0.2);
+        bar.lineStyle(1, 0xF1B440, 0.2);
         bar.lineBetween(0, 52, w, 52);
 
         this._enemyHPBg = this.add.graphics();
@@ -135,7 +135,7 @@ export default class BattleScene extends Phaser.Scene {
         }).setOrigin(0, 0.5);
 
         this._wordCounterTxt = this.add.text(w - 14, 16, `0 / ${this._wordCount}`, {
-            fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F5C842',
+            fontFamily: '"Cinzel", Arial', fontSize: '12px', color: '#F1B440',
         }).setOrigin(1, 0.5);
 
         this._tokenCounterTxt = this.add.text(w - 14, 36, '💎 0', {
@@ -151,7 +151,7 @@ export default class BattleScene extends Phaser.Scene {
         this._hintTxt = this.add.text(w / 2, h * 0.88, '', {
             fontFamily: '"Crimson Text", Georgia, serif',
             fontSize: '15px',
-            color: '#F5F0E8',
+            color: '#F5F4EE',
             alpha: 0.7,
             wordWrap: { width: w * 0.7 },
             align: 'center',
@@ -410,7 +410,7 @@ export default class BattleScene extends Phaser.Scene {
                 btn.style.cssText = `
                     flex:1;max-width:${100 / row.length}%;height:${keyH}px;
                     background:rgba(30,15,60,0.9);border:1px solid rgba(245,200,66,0.3);
-                    border-radius:5px;color:#F5F0E8;font-size:${keyH * 0.42}px;
+                    border-radius:5px;color:#F5F4EE;font-size:${keyH * 0.42}px;
                     font-family:'Cinzel',Arial;cursor:pointer;
                 `;
                 btn.addEventListener('touchstart', (e) => {
@@ -567,7 +567,7 @@ export default class BattleScene extends Phaser.Scene {
 
         this._shakeTarget(this._enemyGfx);
         this._spawnSparkle(this._enemyX, this._enemyY);
-        this._statusTxt.setText(`✦ ${entry.word}! ✦`).setColor('#F5C842');
+        this._statusTxt.setText(`✦ ${entry.word}! ✦`).setColor('#F1B440');
 
         this._wordCounterTxt.setText(`${this._wordIndex + 1} / ${this._wordCount}`);
 
