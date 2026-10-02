@@ -5,11 +5,11 @@ import SaveSystem    from '../systems/SaveSystem.js';
 import WordSystem    from '../systems/WordSystem.js';
 
 const C = {
-    yellow: '#F5C842',
+    yellow: '#F1B440',
     mint:   '#8EC9A2',
     coral:  '#E8845A',
-    cloud:  '#F5F0E8',
-    deep:   '#0d0a1e',
+    cloud:  '#F5F4EE',
+    deep:   '#130A32',
 };
 
 function css(el, styles) { Object.assign(el.style, styles); }
@@ -237,7 +237,7 @@ const DashboardScene = {
     _statCard(label, value) {
         return `
         <div style="background:rgba(20,10,45,0.8);border:1px solid rgba(245,200,66,0.2);border-radius:8px;padding:16px 20px;">
-            <div style="font-size:22px;font-family:'Cinzel',Arial;color:#F5C842;font-weight:bold;">${value}</div>
+            <div style="font-size:22px;font-family:'Cinzel',Arial;color:#F1B440;font-weight:bold;">${value}</div>
             <div style="font-size:11px;color:#8EC9A2;margin-top:4px;">${label}</div>
         </div>`;
     },
@@ -271,10 +271,10 @@ const DashboardScene = {
             const pct     = total > 0 ? Math.round(mastered / total * 100) : 0;
             return `
             <div style="background:rgba(20,10,45,0.8);border:1px solid rgba(245,200,66,0.2);border-radius:8px;padding:14px;text-align:center;">
-                <div style="font-size:22px;font-family:'Cinzel',Arial;color:#F5C842;">${mastered}</div>
+                <div style="font-size:22px;font-family:'Cinzel',Arial;color:#F1B440;">${mastered}</div>
                 <div style="font-size:11px;color:#8EC9A2;margin-top:2px;">Grade ${label}</div>
                 <div style="background:#1a0a30;border-radius:3px;height:6px;overflow:hidden;margin-top:8px;">
-                    <div style="width:${pct}%;height:100%;background:#F5C842;"></div>
+                    <div style="width:${pct}%;height:100%;background:#F1B440;"></div>
                 </div>
                 <div style="font-size:10px;color:#666;margin-top:4px;">${pct}% of ${total}</div>
             </div>`;
