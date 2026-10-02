@@ -1,11 +1,11 @@
 import SaveSystem from '../systems/SaveSystem.js';
 
 const C = {
-    yellow:  '#F5C842',
+    yellow:  '#F1B440',
     mint:    '#8EC9A2',
-    cloud:   '#F5F0E8',
+    cloud:   '#F5F4EE',
     coral:   '#E8845A',
-    deep:    '#0d0a1e',
+    deep:    '#130A32',
 };
 
 export default class TitleScene extends Phaser.Scene {
@@ -54,9 +54,9 @@ export default class TitleScene extends Phaser.Scene {
                 color: C.cloud,
                 alpha: 0.7,
             }).setOrigin(0.5);
-            this._makeButton(width / 2, btnY + 10, '✦  CONTINUE QUEST  ✦', 0xF5C842, () => this._startGame());
+            this._makeButton(width / 2, btnY + 10, '✦  CONTINUE QUEST  ✦', 0xF1B440, () => this._startGame());
         } else {
-            this._makeButton(width / 2, btnY, '✦  BEGIN ADVENTURE  ✦', 0xF5C842, () => this.scene.start('CharCreateScene'));
+            this._makeButton(width / 2, btnY, '✦  BEGIN ADVENTURE  ✦', 0xF1B440, () => this.scene.start('CharCreateScene'));
         }
 
         this._makeButton(width / 2, btnY + 64,  'PLAYER PROFILE',            0x8EC9A2, () => this.scene.start('ProfileScene'),     true);
@@ -67,7 +67,7 @@ export default class TitleScene extends Phaser.Scene {
         this.add.text(width / 2, height - 18, '✦ APPRENTICE  ·  K THROUGH COLLEGE  ✦', {
             fontFamily: 'Arial',
             fontSize: '11px',
-            color: '#F5C842',
+            color: '#F1B440',
             alpha: 0.45,
             letterSpacing: 4,
         }).setOrigin(0.5);
@@ -121,9 +121,9 @@ export default class TitleScene extends Phaser.Scene {
         const stripX   = w / 2 - stripW / 2;
 
         const strip = this.add.graphics();
-        strip.fillStyle(0x0d0a1e, 0.72);
+        strip.fillStyle(0x130A32, 0.72);
         strip.fillRoundedRect(stripX, stripY - stripH / 2, stripW, stripH, 10);
-        strip.lineStyle(1, 0xF5C842, 0.18);
+        strip.lineStyle(1, 0xF1B440, 0.18);
         strip.strokeRoundedRect(stripX, stripY - stripH / 2, stripW, stripH, 10);
 
         // Streak
@@ -142,7 +142,7 @@ export default class TitleScene extends Phaser.Scene {
         barBg.fillRoundedRect(barX, stripY - barH / 2, barW, barH, 3);
 
         const barFill = this.add.graphics();
-        barFill.fillStyle(daily.met ? 0x8EC9A2 : 0xF5C842, 1);
+        barFill.fillStyle(daily.met ? 0x8EC9A2 : 0xF1B440, 1);
         if (daily.pct > 0) {
             barFill.fillRoundedRect(barX, stripY - barH / 2, barW * daily.pct, barH, 3);
         }
