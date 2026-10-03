@@ -154,7 +154,7 @@ export default class CharCreateScene extends Phaser.Scene {
             font-size:${Math.round(16 * scaleX)}px;
             font-family:Arial,sans-serif;
             background:rgba(20,10,45,0.9);
-            border:1px solid rgba(245,200,66,0.5);
+            border:1px solid rgba(241,180,64,0.5);
             border-radius:6px;
             color:#F5F4EE;
             outline:none;
