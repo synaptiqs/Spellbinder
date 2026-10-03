@@ -92,7 +92,7 @@ export default class BattleScene extends Phaser.Scene {
     _drawEnemyShape(enemy, color) {
         if (this._enemyGfx) this._enemyGfx.destroy();
         this._enemyGfx = this.add.image(this._enemyX, this._enemyY, `enemy-${enemy}`)
-            .setOrigin(0.5).setScale(0.9);
+            .setOrigin(0.5).setScale(0.675);
     }
 
     // ── Player ────────────────────────────────────────────────────────────
@@ -103,7 +103,7 @@ export default class BattleScene extends Phaser.Scene {
         const px = w * 0.15;
         const py = h * 0.75;
         this._playerGfx = this.add.image(px, py - 80, `wizard-${avatarId}`)
-            .setOrigin(0.5).setScale(1.375);
+            .setOrigin(0.5).setScale(1.03125);
     }
 
     // ── HUD ───────────────────────────────────────────────────────────────
