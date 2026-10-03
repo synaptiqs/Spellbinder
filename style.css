@@ -6,7 +6,7 @@
 :root {
     --gold:       #F1B440;
     --gold-glow:  #FFD700;
-    --gold-dim:   rgba(245, 200, 66, 0.25);
+    --gold-dim:   rgba(241, 180, 64, 0.25);
     --mint:       #8EC9A2;
     --sky:        #5BB8D6;
     --cloud:      #F5F4EE;
@@ -99,8 +99,8 @@ textarea {
 input[type="text"]:focus,
 input[type="password"]:focus,
 textarea:focus {
-    border-color: rgba(245, 200, 66, 0.65);
-    box-shadow: 0 0 8px rgba(245, 200, 66, 0.2);
+    border-color: rgba(241, 180, 64, 0.65);
+    box-shadow: 0 0 8px rgba(241, 180, 64, 0.2);
 }
 
 /* ── Dashboard overlay ──────────────────────────────────────── */
@@ -112,23 +112,23 @@ textarea:focus {
 
 /* ── Virtual keyboard (mobile) ──────────────────────────────── */
 #vkb button:active {
-    background: rgba(245, 200, 66, 0.2) !important;
+    background: rgba(241, 180, 64, 0.2) !important;
     transform: scale(0.95);
 }
 
 /* ── Scrollbar styling ──────────────────────────────────────── */
 ::-webkit-scrollbar          { width: 6px; }
 ::-webkit-scrollbar-track    { background: rgba(10, 6, 28, 0.5); }
-::-webkit-scrollbar-thumb    { background: rgba(245, 200, 66, 0.3); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(245, 200, 66, 0.55); }
+::-webkit-scrollbar-thumb    { background: rgba(241, 180, 64, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(241, 180, 64, 0.55); }
 
 /* ── Selection ──────────────────────────────────────────────── */
-::selection { background: rgba(245, 200, 66, 0.3); color: var(--cloud); }
+::selection { background: rgba(241, 180, 64, 0.3); color: var(--cloud); }
 
 /* ── Animations ─────────────────────────────────────────────── */
 @keyframes glow-pulse {
     0%, 100% { text-shadow: 0 0 8px rgba(245, 240, 232, 0.35); }
-    50%       { text-shadow: 0 0 22px rgba(245, 200, 66, 0.55); }
+    50%       { text-shadow: 0 0 22px rgba(241, 180, 64, 0.55); }
 }
 
 @keyframes fade-in-up {
@@ -218,7 +218,7 @@ textarea:focus {
     top: 0; bottom: 0;
     width: 40%;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(245,200,66,0) 0%, #F1B440 45%, #ffe9a8 55%, rgba(245,200,66,0) 100%);
+    background: linear-gradient(90deg, rgba(241, 180, 64,0) 0%, #F1B440 45%, #ffe9a8 55%, rgba(241, 180, 64,0) 100%);
     animation: wand-shimmer 1.6s ease-in-out infinite;
 }
 

@@ -36,7 +36,7 @@ const DashboardScene = {
         const box = document.createElement('div');
         css(box, {
             background: 'rgba(15,8,35,0.97)',
-            border: '1px solid rgba(245,200,66,0.4)',
+            border: '1px solid rgba(241,180,64,0.4)',
             borderRadius: '12px',
             padding: '40px 50px',
             textAlign: 'center',
@@ -48,7 +48,7 @@ const DashboardScene = {
             <h2 style="font-family:'Cinzel Decorative',Georgia;font-size:22px;color:${C.yellow};margin:0 0 24px;">Enter PIN</h2>
             <input id="db-pin-input" type="password" maxlength="4" inputmode="numeric"
                 style="width:120px;padding:12px;font-size:24px;text-align:center;letter-spacing:8px;
-                background:rgba(20,10,45,0.9);border:1px solid rgba(245,200,66,0.4);border-radius:6px;
+                background:rgba(20,10,45,0.9);border:1px solid rgba(241,180,64,0.4);border-radius:6px;
                 color:${C.cloud};outline:none;font-family:Arial;">
             <br><br>
             <button id="db-pin-ok" style="padding:10px 30px;background:${C.yellow};border:none;border-radius:6px;
@@ -76,7 +76,7 @@ const DashboardScene = {
         const box = document.createElement('div');
         css(box, {
             background: 'rgba(15,8,35,0.97)',
-            border: '1px solid rgba(245,200,66,0.4)',
+            border: '1px solid rgba(241,180,64,0.4)',
             borderRadius: '12px',
             padding: '40px 50px',
             textAlign: 'center',
@@ -91,7 +91,7 @@ const DashboardScene = {
             </p>
             <input id="db-newpin" type="password" maxlength="4" inputmode="numeric" placeholder="New PIN"
                 style="width:120px;padding:12px;font-size:24px;text-align:center;letter-spacing:8px;
-                background:rgba(20,10,45,0.9);border:1px solid rgba(245,200,66,0.4);border-radius:6px;
+                background:rgba(20,10,45,0.9);border:1px solid rgba(241,180,64,0.4);border-radius:6px;
                 color:${C.cloud};outline:none;font-family:Arial;">
             <br><br>
             <button id="db-setpin-ok" style="padding:10px 30px;background:${C.yellow};border:none;border-radius:6px;
@@ -173,7 +173,7 @@ const DashboardScene = {
                 Paste words (one per line, or comma-separated). Format: WORD, definition, example sentence
             </p>
             <textarea id="db-custom-words" rows="6" style="width:100%;padding:10px;
-                background:rgba(20,10,45,0.8);border:1px solid rgba(245,200,66,0.3);border-radius:6px;
+                background:rgba(20,10,45,0.8);border:1px solid rgba(241,180,64,0.3);border-radius:6px;
                 color:${C.cloud};font-size:13px;font-family:Arial;resize:vertical;box-sizing:border-box;"
                 placeholder="PHOTOSYNTHESIS, Process plants use to make food, Plants use photosynthesis to grow."
             >${SaveSystem.getCustomWords().map(w => `${w.word}, ${w.definition || ''}, ${w.sentence || ''}`).join('\n')}</textarea>
@@ -183,8 +183,8 @@ const DashboardScene = {
             <span id="db-words-saved" style="margin-left:12px;color:${C.mint};font-size:12px;"></span>
 
             <!-- Change PIN -->
-            <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(245,200,66,0.15);">
-                <button id="db-change-pin" style="padding:8px 18px;background:transparent;border:1px solid rgba(245,200,66,0.3);
+            <div style="margin-top:40px;padding-top:20px;border-top:1px solid rgba(241,180,64,0.15);">
+                <button id="db-change-pin" style="padding:8px 18px;background:transparent;border:1px solid rgba(241,180,64,0.3);
                     border-radius:6px;color:${C.yellow};font-family:Arial;font-size:12px;cursor:pointer;">Change PIN</button>
                 <button id="db-reset" style="margin-left:12px;padding:8px 18px;background:transparent;
                     border:1px solid rgba(232,132,90,0.4);border-radius:6px;color:${C.coral};font-family:Arial;font-size:12px;cursor:pointer;">Reset All Progress</button>
@@ -236,7 +236,7 @@ const DashboardScene = {
 
     _statCard(label, value) {
         return `
-        <div style="background:rgba(20,10,45,0.8);border:1px solid rgba(245,200,66,0.2);border-radius:8px;padding:16px 20px;">
+        <div style="background:rgba(20,10,45,0.8);border:1px solid rgba(241,180,64,0.2);border-radius:8px;padding:16px 20px;">
             <div style="font-size:22px;font-family:'Cinzel',Arial;color:#F1B440;font-weight:bold;">${value}</div>
             <div style="font-size:11px;color:#8EC9A2;margin-top:4px;">${label}</div>
         </div>`;
@@ -270,7 +270,7 @@ const DashboardScene = {
             const mastered = allWords.filter(w => w.grade >= min && w.grade <= max && masteredSet.has(w.word)).length;
             const pct     = total > 0 ? Math.round(mastered / total * 100) : 0;
             return `
-            <div style="background:rgba(20,10,45,0.8);border:1px solid rgba(245,200,66,0.2);border-radius:8px;padding:14px;text-align:center;">
+            <div style="background:rgba(20,10,45,0.8);border:1px solid rgba(241,180,64,0.2);border-radius:8px;padding:14px;text-align:center;">
                 <div style="font-size:22px;font-family:'Cinzel',Arial;color:#F1B440;">${mastered}</div>
                 <div style="font-size:11px;color:#8EC9A2;margin-top:2px;">Grade ${label}</div>
                 <div style="background:#1a0a30;border-radius:3px;height:6px;overflow:hidden;margin-top:8px;">

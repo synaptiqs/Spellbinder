@@ -399,7 +399,7 @@ export default class BattleScene extends Phaser.Scene {
             position:fixed;bottom:0;left:0;width:100%;
             display:grid;grid-template-rows:repeat(3,auto);gap:4px;
             padding:6px 6px 10px;background:rgba(10,6,25,0.96);
-            border-top:1px solid rgba(245,200,66,0.25);z-index:20;
+            border-top:1px solid rgba(241, 180, 64,0.25);z-index:20;
         `;
         rows.forEach(row => {
             const rowDiv = document.createElement('div');
@@ -409,7 +409,7 @@ export default class BattleScene extends Phaser.Scene {
                 btn.textContent = ch;
                 btn.style.cssText = `
                     flex:1;max-width:${100 / row.length}%;height:${keyH}px;
-                    background:rgba(30,15,60,0.9);border:1px solid rgba(245,200,66,0.3);
+                    background:rgba(30,15,60,0.9);border:1px solid rgba(241, 180, 64,0.3);
                     border-radius:5px;color:#F5F4EE;font-size:${keyH * 0.42}px;
                     font-family:'Cinzel',Arial;cursor:pointer;
                 `;
